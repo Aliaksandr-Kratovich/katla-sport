@@ -65,5 +65,20 @@ namespace KatlaSport.DataAccess.ProductCatalogue
         /// Gets or sets a collection of items for the product.
         /// </summary>
         public virtual ICollection<StoreItem> Items { get; set; }
+
+        /// <summary>
+        /// Gets or sets a product description.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets a product manufacturer code.
+        /// </summary>
+        public string ManufacturerCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets a product price.
+        /// </summary>
+        public decimal? Price { get; set; }
     }
 }
