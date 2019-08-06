@@ -76,47 +76,23 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-<<<<<<< HEAD
-        public async Task<IHttpActionResult> AddHive(UpdateHiveRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
-            var hive = await _hiveService.CreateHiveAsync(request);
-=======
         public async Task<IHttpActionResult> AddHive([FromBody] UpdateHiveRequest createRequest) {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             var hive = await _hiveService.CreateHiveAsync(createRequest);
->>>>>>> step11
             var location = string.Format($"/api/hives/{hive.Id}");
             return Created<Hive>(location, hive);
         }
 
         [HttpPut]
-<<<<<<< HEAD
         [Route("")]
-=======
->>>>>>> step11
         [SwaggerResponse(HttpStatusCode.NoContent)]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-<<<<<<< HEAD
-        public async Task<IHttpActionResult> UpdateHive([FromUri] int id, UpdateHiveRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
-            await _hiveService.UpdateHiveAsync(id, request);
-=======
         public async Task<IHttpActionResult> UpdateHive([FromUri] int id, [FromBody] UpdateHiveRequest createRequest)
         {
             if (!ModelState.IsValid)
@@ -124,7 +100,6 @@ namespace KatlaSport.WebApi.Controllers
                 return BadRequest(ModelState);
             }
             await _hiveService.UpdateHiveAsync(id, createRequest);
->>>>>>> step11
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
 
@@ -141,10 +116,6 @@ namespace KatlaSport.WebApi.Controllers
             {
                 return BadRequest();
             }
-<<<<<<< HEAD
-
-=======
->>>>>>> step11
             await _hiveService.DeleteHiveAsync(id);
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
