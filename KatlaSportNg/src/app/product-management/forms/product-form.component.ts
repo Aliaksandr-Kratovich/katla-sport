@@ -50,7 +50,7 @@ export class ProductFormComponent implements OnInit {
     if (this.existed) {
       this.productService.updateProduct(this.product).subscribe(p => this.navigateTo());
     } else {
-      this.product.сategoryId = this.categoryId;
+      this.product.categoryId = this.categoryId;
       this.productService.addProduct(this.product).subscribe(p => this.navigateTo());
     }
   }
