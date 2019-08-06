@@ -1,13 +1,13 @@
-﻿using System;
+﻿using KatlaSport.Services.HiveManagement;
+using KatlaSport.WebApi.CustomFilters;
+using Microsoft.Web.Http;
+using Swashbuckle.Swagger.Annotations;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using KatlaSport.Services.HiveManagement;
-using KatlaSport.WebApi.CustomFilters;
-using Microsoft.Web.Http;
-using Swashbuckle.Swagger.Annotations;
 
 namespace KatlaSport.WebApi.Controllers
 {
@@ -58,25 +58,25 @@ namespace KatlaSport.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("")]
+        [Route("{hiveId:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.Created)]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> AddHiveSection([FromBody]UpdateHiveSectionRequest request)
+        public async Task<IHttpActionResult> AddHiveSection([FromBody]UpdateHiveSectionRequest request, [FromUri] int hiveId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var hiveSection = await _hiveSectionService.CreateHiveSectionAsync(request);
-            var location = string.Format($"/api/hives/{hiveSection.Id}");
-            return Created<HiveSection>(location, hiveSection);
+            var hiveSection = await _hiveSectionService.CreateHiveSectionAsync(request, hiveId);
+            var location = string.Format($"/api/sections/{hiveSection.Id}");
+            return Created(location, hiveSection);
         }
 
         [HttpPut]
-        [Route("")]
+        [Route("{id:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.NoContent)]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
@@ -94,7 +94,7 @@ namespace KatlaSport.WebApi.Controllers
         }
 
         [HttpDelete]
-        [Route("")]
+        [Route("{id:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.NoContent)]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]

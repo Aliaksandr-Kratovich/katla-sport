@@ -7,38 +7,38 @@ import { HiveListItem } from '../models/hive-list-item';
 import { HiveSectionListItem } from '../models/hive-section-list-item';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class HiveService {
-  private url = environment.apiUrl + 'api/hives/';
+    private url = environment.apiUrl + 'api/hives/';
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  getHives(): Observable<Array<HiveListItem>> {
-    return this.http.get<Array<HiveListItem>>(this.url);
-  }
+    getHives(): Observable<Array<HiveListItem>> {
+        return this.http.get<Array<HiveListItem>>(this.url);
+    }
 
-  getHive(hiveId: number): Observable<Hive> {
-    return this.http.get<Hive>(`${this.url}${hiveId}`);
-  }
+    getHive(hiveId: number): Observable<Hive> {
+        return this.http.get<Hive>(`${this.url}${hiveId}`);
+    }
 
-  getHiveSections(hiveId: number): Observable<Array<HiveSectionListItem>> {
-    return this.http.get<Array<HiveSectionListItem>>(`${this.url}${hiveId}/sections`);
-  }
+    getHiveSections(hiveId: number): Observable<Array<HiveSectionListItem>> {
+        return this.http.get<Array<HiveSectionListItem>>(`${this.url}${hiveId}/sections`);
+    }
 
-  addHive(hive: Hive): Observable<Hive> {
-    return this.http.post<Hive>(this.url, hive);
-  }
+    addHive(hive: Hive): Observable<Hive> {
+        return this.http.post<Hive>(this.url, hive);
+    }
 
-  updateHive(hive: Hive): Observable<Object> {
-    return this.http.put<Hive>(`${this.url}${hive.id}`, hive);
-  }
+    updateHive(hive : Hive): Observable<Object> {
+        return this.http.put<Hive>(`${this.url}${hive.id}`, hive);
+    }
 
-  deleteHive(hiveId: number): Observable<Object> {
-    return this.http.delete<Hive>(`${this.url}${hiveId}`);
-  }
+    deleteHive(hiveId: number): Observable<Object> {
+        return this.http.delete(`${this.url}${hiveId}`);
+    }
 
-  setHiveStatus(hiveId: number, deletedStatus: boolean): Observable<Object> {
-    return this.http.put<Hive>(`${this.url}${hiveId}/status/${deletedStatus}`, "");
-  }
+    setHiveStatus(hiveId: number, deletedStatus: boolean): Observable<Object> {
+        return this.http.put<Hive>(`${this.url}${hiveId}/status/${deletedStatus}`, "");
+    }
 }

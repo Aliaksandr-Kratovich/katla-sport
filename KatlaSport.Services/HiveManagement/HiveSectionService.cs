@@ -77,7 +77,7 @@ namespace KatlaSport.Services.HiveManagement
         }
 
         /// <inheritdoc/>
-        public async Task<HiveSection> CreateHiveSectionAsync(UpdateHiveSectionRequest createRequest)
+        public async Task<HiveSection> CreateHiveSectionAsync( UpdateHiveSectionRequest createRequest, int hiveId)
         {
             var dbHiveSections = await _context.Sections.Where(h => h.Code == createRequest.Code).ToArrayAsync();
             if (dbHiveSections.Length > 0)
@@ -88,6 +88,7 @@ namespace KatlaSport.Services.HiveManagement
             var dbHiveSection = Mapper.Map<UpdateHiveSectionRequest, DbHiveSection>(createRequest);
             dbHiveSection.CreatedBy = _userContext.UserId;
             dbHiveSection.LastUpdatedBy = _userContext.UserId;
+            dbHiveSection.StoreHiveId = hiveId;
             _context.Sections.Add(dbHiveSection);
 
             await _context.SaveChangesAsync();
