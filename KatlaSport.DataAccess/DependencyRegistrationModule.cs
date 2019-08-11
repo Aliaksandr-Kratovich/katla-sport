@@ -10,6 +10,7 @@ namespace KatlaSport.DataAccess
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<ApplicationDbContext>().InstancePerRequest();
+            builder.RegisterType<PhoneStore.ProductStorePhoneContext>().As<PhoneStore.IProductStorePhoneContext>().InstancePerRequest();
             builder.RegisterType<ProductCatalogue.ProductCatalogueContext>().As<ProductCatalogue.IProductCatalogueContext>().InstancePerRequest();
             builder.RegisterType<ProductStoreHive.ProductStoreHiveContext>().As<ProductStoreHive.IProductStoreHiveContext>().InstancePerRequest();
             builder.RegisterType<ProductStore.ProductStoreContext>().As<ProductStore.IProductStoreContext>().InstancePerRequest();

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using KatlaSport.DataAccess;
 using KatlaSport.DataAccess.ProductStoreHive;
 using DbHiveSection = KatlaSport.DataAccess.ProductStoreHive.StoreHiveSection;
 
 namespace KatlaSport.Services.HiveManagement
 {
+    using AutoMapper;
     /// <summary>
     /// Represents a hive section service.
     /// </summary>

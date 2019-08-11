@@ -41,8 +41,8 @@
     <AssemblyOriginatorKeyFile>..\KatlaSport.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.8.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.8.0\lib\net45\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=4.9.3.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.3\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -61,7 +61,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" Exclude="obj\Debug\*.cs;obj\Release\*.cs;Migrations\*.*" />
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="CustomerCatalogue\Customer.cs" />
+    <Compile Include="CustomerCatalogue\CustomerConfiguration.cs" />
+    <Compile Include="CustomerCatalogue\CustomerContext.cs" />
+    <Compile Include="CustomerCatalogue\ICustomerContext.cs" />
+    <Compile Include="CustomSqlServerMigrationSqlGenerator.cs" />
+    <Compile Include="DebugDatabaseLogger.cs" />
+    <Compile Include="DependencyRegistrationModule.cs" />
+    <Compile Include="DomainContextBase.cs" />
+    <Compile Include="EntitySet.cs" />
+    <Compile Include="EntitySetBase.cs" />
+    <Compile Include="IAsyncEntityStorage.cs" />
+    <Compile Include="IDatabaseLogger.cs" />
+    <Compile Include="IEntitySet.cs" />
+    <Compile Include="PhoneStore\IProductStorePhoneContext.cs" />
+    <Compile Include="PhoneStore\ProductStorePhoneContext.cs" />
+    <Compile Include="PhoneStore\StorePhoneConfiguration.cs" />
+    <Compile Include="PhoneStore\StorePhoneModelConfiguration.cs" />
+    <Compile Include="ProductCatalogue\CatalogueProduct.cs" />
+    <Compile Include="ProductCatalogue\CatalogueProductConfiguration.cs" />
+    <Compile Include="ProductCatalogue\IProductCatalogueContext.cs" />
+    <Compile Include="ProductCatalogue\ProductCatalogueContext.cs" />
+    <Compile Include="ProductCatalogue\ProductCategory.cs" />
+    <Compile Include="ProductCatalogue\ProductCategoryConfiguration.cs" />
+    <Compile Include="ProductStoreHive\IProductStoreHiveContext.cs" />
+    <Compile Include="ProductStoreHive\ProductStoreHiveContext.cs" />
+    <Compile Include="ProductStoreHive\StoreHive.cs" />
+    <Compile Include="ProductStoreHive\StoreHiveConfiguration.cs" />
+    <Compile Include="ProductStoreHive\StoreHiveSection.cs" />
+    <Compile Include="ProductStoreHive\StoreHiveSectionCategory.cs" />
+    <Compile Include="ProductStoreHive\StoreHiveSectionCategoryConfiguration.cs" />
+    <Compile Include="ProductStoreHive\StoreHiveSectionConfiguration.cs" />
+    <Compile Include="ProductStore\IProductStoreContext.cs" />
+    <Compile Include="ProductStore\ProductStoreContext.cs" />
+    <Compile Include="ProductStore\StoreItem.cs" />
+    <Compile Include="ProductStore\StoreItemConfiguration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueriableExtensions.cs" />
     <Compile Include="Migrations\201805190719490_InitialCreate.cs" />
     <Compile Include="Migrations\201805190719490_InitialCreate.Designer.cs">
       <DependentUpon>201805190719490_InitialCreate.cs</DependentUpon>
@@ -80,10 +117,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201805190719490_InitialCreate.resx">
       <DependentUpon>201805190719490_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +126,16 @@
     <EmbeddedResource Include="Migrations\201908042117299_AddProductDescriptionManCodePrice.resx">
       <DependentUpon>201908042117299_AddProductDescriptionManCodePrice.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KatlaSport.Services.Models\KatlaSport.Services.Models.csproj">
+      <Project>{FBCA4661-79C9-4B45-9361-430B0C84F5EA}</Project>
+      <Name>KatlaSport.Services.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
