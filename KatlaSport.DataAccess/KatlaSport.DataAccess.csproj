@@ -75,6 +75,14 @@
     <Compile Include="IAsyncEntityStorage.cs" />
     <Compile Include="IDatabaseLogger.cs" />
     <Compile Include="IEntitySet.cs" />
+    <Compile Include="Migrations\201908112014369_Migrate Phone.cs" />
+    <Compile Include="Migrations\201908112014369_Migrate Phone.Designer.cs">
+      <DependentUpon>201908112014369_Migrate Phone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908121257575_UrlPhoto Migration.cs" />
+    <Compile Include="Migrations\201908121257575_UrlPhoto Migration.Designer.cs">
+      <DependentUpon>201908121257575_UrlPhoto Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="PhoneStore\IProductStorePhoneContext.cs" />
     <Compile Include="PhoneStore\ProductStorePhoneContext.cs" />
     <Compile Include="PhoneStore\StorePhoneConfiguration.cs" />
@@ -125,6 +133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908042117299_AddProductDescriptionManCodePrice.resx">
       <DependentUpon>201908042117299_AddProductDescriptionManCodePrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908112014369_Migrate Phone.resx">
+      <DependentUpon>201908112014369_Migrate Phone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908121257575_UrlPhoto Migration.resx">
+      <DependentUpon>201908121257575_UrlPhoto Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

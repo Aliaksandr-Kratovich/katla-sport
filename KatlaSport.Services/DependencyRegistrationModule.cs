@@ -17,6 +17,8 @@ namespace KatlaSport.Services
             builder.RegisterType<ProductManagement.ProductCatalogueService>().As<ProductManagement.IProductCatalogueService>();
             builder.RegisterType<HiveManagement.HiveService>().As<HiveManagement.IHiveService>();
             builder.RegisterType<HiveManagement.HiveSectionService>().As<HiveManagement.IHiveSectionService>();
+            builder.RegisterType<PhoneManagement.PhoneService>().As<PhoneManagement.IPhoneService>();
+            builder.RegisterType<PhoneManagement.PhoneModelService>().As<PhoneManagement.IPhoneModelService>();
             builder.RegisterType<UserContext>().As<IUserContext>();
         }
     }

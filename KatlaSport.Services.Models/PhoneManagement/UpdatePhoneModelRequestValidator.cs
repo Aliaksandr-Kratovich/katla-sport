@@ -9,7 +9,8 @@ namespace KatlaSport.Services.PhoneManagement
         {
             RuleFor(r => r.Code).Length(1, 20);
             RuleFor(r => r.Model).Length(1,20);
-            RuleFor(r => r.PhoneId).GreaterThan(0);
+            RuleFor(r => r.StorePhoneId).GreaterThan(0);
+            RuleFor(r => r.UrlPhoto);
         }
     }
 }
